@@ -1,0 +1,10 @@
+<h1>Product</h1>
+<ul>
+  <%= @product.title %>
+  Ratings
+  <% @product.reviews.each do |review| %>
+    <li>
+      <%= review.review %>  <%= review.rating %>
+    </li>
+  <% end %>
+</ul>
