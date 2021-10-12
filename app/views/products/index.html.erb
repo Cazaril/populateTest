@@ -1,7 +1,7 @@
 <h1>Product</h1>
 <ul>
   <%= @product.title %>
-  <%= @final_rating %>
+  <%= @product.rating %>
   <h2>Ratings</h2>
   <% @product.reviews.each do |review| %>
     <li>

@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_action :get_product, except: [:index]
-  before_action :calculate_rating
 
   def index
     @product = Product.find(1)
@@ -14,6 +13,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
+      @product.calculate_rating
       flash[:success] = "Review added"
       redirect_to action: 'index'
     else
@@ -28,15 +28,6 @@ class ProductsController < ApplicationController
       :reviews_attributes => [
         :review, :rating
       ])
-  end
-
-  private
-  def calculate_rating
-    @product = Product.find(1)
-    ratings = @product.reviews
-                      .select{|review| not review.rating.nil?}
-                      .flat_map(&:rating)
-    @final_rating = (ratings.inject(0, :+)/@product.reviews.count).round
   end
 
   private
