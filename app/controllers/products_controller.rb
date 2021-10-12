@@ -1,21 +1,24 @@
 class ProductsController < ApplicationController
+  before_action :get_product, except: [:index]
+  before_action :calculate_rating
+
   def index
     @product = Product.find(1)
   end
 
   def show
-    @review = Product.find(params[:id])
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
-
     if @product.update(product_params)
-      redirect_to action: "index"
+      flash[:success] = "Review added"
+      redirect_to action: 'index'
+    else
+    # flash.now[:error] = "To-do item update failed"
+      redirect_to action: @product.reviews
     end
   end
 
@@ -25,5 +28,19 @@ class ProductsController < ApplicationController
       :reviews_attributes => [
         :review, :rating
       ])
+  end
+
+  private
+  def calculate_rating
+    @product = Product.find(1)
+    ratings = @product.reviews
+                      .select{|review| not review.rating.nil?}
+                      .flat_map(&:rating)
+    @final_rating = (ratings.inject(0, :+)/@product.reviews.count).round
+  end
+
+  private
+  def get_product
+    @product = Product.find(params[:id])
   end
 end
