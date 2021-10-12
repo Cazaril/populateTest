@@ -1,3 +1,7 @@
 <h1><%= @product.title %></h1>
 
-<p>Global rating: <%= @product.rating %></p>
+<p>Global rating:
+<%  @product.rating.to_i.times do  %>
+    <span class="glyphicon glyphicon-star"></span>
+<% end %>
+</p>

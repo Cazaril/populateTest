@@ -6,7 +6,7 @@ class Product < ApplicationRecord
     ratings = self.reviews
                   .reject{|review| review.rating.nil?}
                   .sum(&:rating)
-    final_rating = (ratings / self.reviews.count).round
+    final_rating = (ratings / self.reviews.count)
     self.update(rating: final_rating)
     final_rating
   end
