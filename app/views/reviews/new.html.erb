@@ -1,9 +1,9 @@
 <h1>Add your review</h1>
 
-<%= form_with(model: [@product, @review]) do |r| %>
-  <div>
+<%= form_with model: @product do |form| %>
+  <%= form.fields_for :reviews, @review do |r| %>  <div>
     <%= r.label :rating %><br>
-    <%= r.number_field :rating, in: 1.0..5.0, step: 1.0, :required => true %>
+    <%= r.number_field :rating, in: 0.0..5.0, step: 1.0, :required => true %>
   </div>
 
   <div>
@@ -14,4 +14,5 @@
   <div>
     <%= r.submit "Create review" %>
   </div>
+  <% end %>
 <% end %>

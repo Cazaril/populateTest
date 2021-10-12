@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
       redirect_to action: 'index'
     else
     # flash.now[:error] = "To-do item update failed"
-      redirect_to action: @product.reviews
+      redirect_to action: @product.reviews.new
     end
   end
 
