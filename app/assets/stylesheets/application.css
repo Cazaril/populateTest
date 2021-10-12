@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+#rating {
+    font-size: 1em;
+}
+
+.product-title {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.rating-stars-gold {
+    color: gold;
+}
+
+.rating-stars {
+    color: grey;
+}
+
+.rating-stars-container {
+}

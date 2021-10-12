@@ -1,12 +1,8 @@
-<h1>Product</h1>
-
-  <div><%= @product.title %></div>
-  <div><%= @product.rating.round(1) %></div>
-  <h2>Ratings</h2>
-<ul>
-  <% @product.reviews.each do |review| %>
-    <li>
-      <%= review.review %>. Rating:  <%= review.rating %>
-    </li>
+<h1> Products </h1>
+<% if @products.empty? %>
+  <div> No products exists </div>
+<% else %>
+  <% @products.each do |product| %>
+    <%= render "product", product: product %>
   <% end %>
-</ul>
+<% end %>

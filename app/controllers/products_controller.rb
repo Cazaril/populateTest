@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :get_product, except: [:index]
 
   def index
-    @product = Product.find(1)
+    @products = Product.all
   end
 
   def show

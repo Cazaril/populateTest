@@ -1,11 +1,14 @@
-<h1><%= @product.title %></h1>
+<div class="product-title"><%= @product.title %></div>
 
-<div id="rating">Rating <%= @product.rating.round(1) %></div>
-<div id="ratingStars">
-  <%  @product.rating.to_i.times do  %>
-    <span class="bi bi-star-fill"></span>
-<% end %>
-</div>
+<div><%= @product.rating.round(1) %></div>
+<div>Reviews</div>
+<ul>
+  <% @product.reviews.each do |review| %>
+    <li>
+      <%= review.review %>. Rating:  <%= review.rating %>
+    </li>
+  <% end %>
+</ul>
 <%= link_to new_product_review_url(@product), :class => "btn btn-light" do %>
   Add review
 <% end %>

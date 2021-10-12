@@ -1,0 +1,16 @@
+
+<div>
+  <span>
+    <%= link_to product.title, product %>. Rating <%= product.rating.round(1) %>
+  </span>
+</div>
+
+<% stars = product.rating.to_i  %>
+<div class="rating-stars">
+  <%  stars.times do  %>
+    <span class="rating-stars-gold bi bi-star-fill"></span>
+  <% end %>
+  <%  (5 - stars).times do  %>
+    <span class="bi bi-star-fill"></span>
+  <% end %>
+</div>
