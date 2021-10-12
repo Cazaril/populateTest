@@ -1,7 +1,7 @@
 <div class="product-title"><%= @product.title %></div>
-
+<%= render "product", product: @product %>
 <div><%= @product.rating.round(1) %></div>
-<div>Reviews</div>
+<div class="reviews">Reviews</div>
 <ul>
   <% @product.reviews.each do |review| %>
     <li>

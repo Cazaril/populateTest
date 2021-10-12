@@ -23,6 +23,11 @@
     font-weight: bold;
 }
 
+.reviews {
+    font-size: 2em;
+    font-weight: bold;
+}
+
 .rating-stars-gold {
     color: gold;
 }
