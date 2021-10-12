@@ -15,10 +15,10 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       @product.calculate_rating
       flash[:success] = "Review added"
-      redirect_to action: 'index'
+      redirect_to @product
     else
     # flash.now[:error] = "To-do item update failed"
-      redirect_to action: @product.reviews.new
+      redirect_to new_product_review_url(@product)
     end
   end
 

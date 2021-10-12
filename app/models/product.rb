@@ -3,11 +3,8 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :reviews
 
   def calculate_rating
-    ratings = self.reviews
-                  .reject{|review| review.rating.nil?}
-                  .sum(&:rating)
-    final_rating = (ratings / self.reviews.count)
-    self.update(rating: final_rating)
-    final_rating
+    rating = Review.where(:product_id => self.id).average(:rating)
+    self.update(rating: rating)
+    rating
   end
 end

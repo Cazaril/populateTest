@@ -1,7 +1,11 @@
 <h1><%= @product.title %></h1>
 
-<p>Global rating:
-<%  @product.rating.to_i.times do  %>
-    <span class="glyphicon glyphicon-star"></span>
+<div id="rating">Rating <%= @product.rating.round(1) %></div>
+<div id="ratingStars">
+  <%  @product.rating.to_i.times do  %>
+    <span class="bi bi-star-fill"></span>
 <% end %>
-</p>
+</div>
+<%= link_to new_product_review_url(@product), :class => "btn btn-light" do %>
+  Add review
+<% end %>

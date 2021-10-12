@@ -13,13 +13,18 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = @product.reviews.new
+    @review = @product.reviews.new(review_params)
 
     if @review.save
       redirect_to @product
     else
       render :new
     end
+  end
+
+  private
+  def review_params
+    params.require(:review).permit(:review, :rating)
   end
 
 
