@@ -1,6 +1,6 @@
 <div>
   <span>
-    <%= link_to product.title, product %>. Rating <%= product.rating.round(1) %>
+    Rating <%= product.rating.round(1) %> <%= render "stars", product: product %>
   </span>
 </div>
-<%= render "stars", product: product %>
+

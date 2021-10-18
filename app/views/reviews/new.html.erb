@@ -1,10 +1,13 @@
 <h1>Add your review</h1>
 
 <%= form_with model: [@product, @review] do |r| %>
-    <div>
-    <%= r.label :rating %><br>
-    <%= r.number_field :rating, in: 0.0..5.0, step: 1.0, :required => true %>
-  </div>
+  <fieldset class="rate">
+    <input type="radio" id="rating5" name="rating" value="5" /><label class="rating" for="rating5" title="5 stars"></label>
+    <input type="radio" id="rating4" name="rating" value="4" /><label class="rating" for="rating4" title="4 stars"></label>
+    <input type="radio" id="rating3" name="rating" value="3" /><label class="rating" for="rating3" title="3 stars"></label>
+    <input type="radio" id="rating2" name="rating" value="2" /><label class="rating" for="rating2" title="2 stars"></label>
+    <input type="radio" id="rating1" name="rating" value="1" /><label class="rating" for="rating1" title="1 star"></label>
+  </fieldset>
 
   <div>
     <%= r.label :review %><br>

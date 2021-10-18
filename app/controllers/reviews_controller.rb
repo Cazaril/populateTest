@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @product.reviews.new(review_params)
-
+    @review.rating = params["rating"]
     if @review.save
       redirect_to @product
     else
